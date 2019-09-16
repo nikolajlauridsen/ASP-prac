@@ -28,7 +28,7 @@ namespace RecipeSite.Models{
         [Display(Name = "Average rating")]
         public double AvgRating{
             get{
-                if(Comments == null){
+                if(Ratings == null){
                     return 0;
                 }
                 int ratingTotal = 0;
