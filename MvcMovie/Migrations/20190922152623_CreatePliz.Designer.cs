@@ -9,8 +9,8 @@ using MvcMovie.Models;
 namespace MvcMovie.Migrations
 {
     [DbContext(typeof(MvcMovieContext))]
-    [Migration("20190922144355_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190922152623_CreatePliz")]
+    partial class CreatePliz
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,7 +25,10 @@ namespace MvcMovie.Migrations
 
                     b.Property<string>("Genre");
 
-                    b.Property<decimal>("Price");
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Rating");
 
                     b.Property<DateTime>("ReleaseDate");
 
