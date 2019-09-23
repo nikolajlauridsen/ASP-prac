@@ -23,6 +23,8 @@ namespace MvcMovie.Migrations
 
                     b.Property<string>("Genre");
 
+                    b.Property<string>("MainCharacter");
+
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 

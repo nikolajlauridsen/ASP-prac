@@ -34,7 +34,9 @@ namespace ContosoUniversity
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddMvc().AddRazorPagesOptions(o=>{o.Conventions.ConfigureFilter(new IgnoreAntiforgeryTokenAttribute());});
 
             services.AddDbContext<SchoolContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("SchoolContext")));
