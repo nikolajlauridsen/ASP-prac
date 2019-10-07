@@ -1,0 +1,68 @@
+﻿@model FlightSearchViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+
+    <form asp-controller="Flights" asp-action="Index" method="get">
+        <p>
+            From: <input type="text" asp-for="FromString" />
+            To: <input type="text" asp-for="ToString" />
+            <input type="submit" value="Filter" class="btn btn-info"/>
+        </p>
+    </form>
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Flights[0].AircraftType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flights[0].FromLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flights[0].ToLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flights[0].DepartureTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flights[0].ArrivalTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Flights) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AircraftType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FromLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ToLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartureTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArrivalTime)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FlightId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FlightId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FlightId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
