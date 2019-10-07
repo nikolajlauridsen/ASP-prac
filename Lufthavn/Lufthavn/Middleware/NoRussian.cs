@@ -59,7 +59,11 @@ namespace Lufthavn.Middleware
             {
                 await _next(context);
             }
-            context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+            else
+            {
+                context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+            }
+            
 
         }
     }
