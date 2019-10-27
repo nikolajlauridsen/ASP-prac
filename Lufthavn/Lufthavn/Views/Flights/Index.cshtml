@@ -1,0 +1,76 @@
+﻿@model FlightSearchViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-info">Create New</a>
+</p>
+
+<form asp-controller="Flights" asp-action="Index" method="get">
+    <div class="form-group row">
+        <label for="fromString" class="col-form-label">From</label>
+        <div class="col-sm-5">
+            <input id="fromString" type="text" asp-for="FromString" class="form-control" />
+        </div>
+        <label for="toString" class="col-form-label">To</label>
+        <div class="col-sm-5">
+            <input type="text" id="toString" asp-for="ToString" class="form-control" />
+        </div>
+        <input type="submit" value="Filter" class="btn btn-info" />
+    </div>
+</form>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Flights[0].AircraftType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flights[0].FromLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flights[0].ToLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flights[0].DepartureTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Flights[0].ArrivalTime)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Flights)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AircraftType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FromLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ToLocation)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DepartureTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArrivalTime)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.FlightId" class="btn btn-info">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.FlightId" class="btn btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.FlightId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

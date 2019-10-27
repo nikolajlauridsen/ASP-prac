@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MvcMovie.Migrations
 {
-    public partial class CreatePliz : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,8 @@ namespace MvcMovie.Migrations
                     ReleaseDate = table.Column<DateTime>(nullable: false),
                     Genre = table.Column<string>(nullable: true),
                     Price = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Rating = table.Column<string>(nullable: true)
+                    Rating = table.Column<string>(nullable: true),
+                    MainCharacter = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

@@ -16,6 +16,10 @@
             <option value="">All</option>
         </select>
 
+        <select asp-for="RatingString" asp-items="Model.Ratings">
+            <option value="">ALL</option>
+        </select>
+
         Title: <input type="text" asp-for="SearchString" />
         <input type="submit" value="Filter" />
     </p>
@@ -39,6 +43,9 @@
             <th>
             @Html.DisplayNameFor(model => model.Movies[0].Rating)
             </th>
+            <th>
+            @Html.DisplayNameFor(model => model.Movies[0].MainCharacter)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -60,6 +67,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Rating)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MainCharacter)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
