@@ -1,0 +1,28 @@
+﻿@model List<Movie>;
+@{
+    ViewData["Title"] = "Movies";
+}
+
+    <div class="text-center">
+        <h2>Movie tickets here!</h2>
+        <div class="container">
+            <div class="row">
+                @{
+                    foreach (Movie movie in Model)
+                    {
+                        <div class="card" style="width: 18rem; margin:1rem;">
+                            <div class="card-body">
+                                <h5 class="card-title">@movie.Title</h5>
+                                <h8 class="card-subtitle mb-2 text-muted">@movie.Genre</h8>
+                                <p class="card-text">@movie.Description</p>
+                                <p class="card-text">Seats: @movie.NumSeats</p>
+                                <form asp-controller="Home" asp-action="ReserveSeat" asp-route-id="@movie.ID" method="post">
+                                    <input type="submit" value="Reserve ticket" class="btn btn-primary"/>
+                                </form>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
