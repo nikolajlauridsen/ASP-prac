@@ -14,6 +14,7 @@ namespace MovieApi.Controllers
     public class MovieController : ControllerBase
     {
         private readonly MovieContext _context;
+        private object seatsLock = new object();
 
         public MovieController(MovieContext context)
         {
@@ -59,7 +60,10 @@ namespace MovieApi.Controllers
                 return BadRequest();
             }
 
-            movie.NumSeats -= 1;
+            lock(seatsLock){
+                movie.NumSeats -= 1;
+            }
+            
 
             _context.Movies.Update(movie);
 
