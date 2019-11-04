@@ -1,4 +1,4 @@
-﻿@model List<Movie>;
+﻿@*@model List<Movie>;*@
 @{
     ViewData["Title"] = "Movies";
 }
@@ -6,8 +6,9 @@
     <div class="text-center">
         <h2>Movie tickets here!</h2>
         <div class="container">
-            <div class="row">
-                @{
+            <div class="row", id="MovieContainer">
+                
+                @*@{
                     foreach (Movie movie in Model)
                     {
                         <div class="card" style="width: 18rem; margin:1rem;">
@@ -22,7 +23,12 @@
                             </div>
                         </div>
                     }
-                }
+                }*@
+                
             </div>
         </div>
     </div>
+
+
+<script src="~/js/index.js"></script>
+<script>getMovies()</script>

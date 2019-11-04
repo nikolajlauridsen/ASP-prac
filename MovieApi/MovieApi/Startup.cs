@@ -22,11 +22,22 @@ namespace MovieApi
             Configuration = configuration;
         }
 
+        readonly string AllowApi = "_allowApi";
+
         public IConfiguration Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(AllowApi,
+                builder =>
+                {
+                    builder.WithOrigins("https://localhost:44304", "https://localhost:5001").AllowAnyHeader().AllowAnyMethod();
+                });
+            });
+
             services.AddControllers();
             services.AddDbContext<MovieContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("MovieContext")));
@@ -45,6 +56,8 @@ namespace MovieApi
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseCors(AllowApi);
 
             app.UseEndpoints(endpoints =>
             {

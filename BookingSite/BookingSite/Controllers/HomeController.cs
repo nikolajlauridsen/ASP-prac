@@ -27,20 +27,20 @@ namespace BookingSite.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            HttpRequestMessage req = new HttpRequestMessage(HttpMethod.Get, baseUrl+"movie");
-            HttpClient client = _clientFactory.CreateClient();
-            HttpResponseMessage res = await client.SendAsync(req);
+            //HttpRequestMessage req = new HttpRequestMessage(HttpMethod.Get, baseUrl+"movie");
+            //HttpClient client = _clientFactory.CreateClient();
+            //HttpResponseMessage res = await client.SendAsync(req);
 
-            List<Movie> movies;
-            if (res.IsSuccessStatusCode)
-            {
-                movies = JsonConvert.DeserializeObject<List<Movie>>(await res.Content.ReadAsStringAsync());
-            } else
-            {
-                movies = new List<Movie>();
-            }
+            //List<Movie> movies;
+            //if (res.IsSuccessStatusCode)
+            //{
+            //    movies = JsonConvert.DeserializeObject<List<Movie>>(await res.Content.ReadAsStringAsync());
+            //} else
+            //{
+            //    movies = new List<Movie>();
+            //}
 
-            return View(movies);
+            return View();
         }
 
         [HttpPost]
