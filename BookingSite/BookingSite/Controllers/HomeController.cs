@@ -16,7 +16,7 @@ namespace BookingSite.Controllers
     {
         private readonly IHttpClientFactory _clientFactory;
         private readonly ILogger<HomeController> _logger;
-        private readonly string baseUrl = "https://localhost:44350/api/";
+        private readonly string baseUrl = "https://localhost:5001/api/";
 
         public HomeController(ILogger<HomeController> logger, IHttpClientFactory cFactory)
         {

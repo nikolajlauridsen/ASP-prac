@@ -1,4 +1,4 @@
-﻿const uri = 'https://localhost:44350/api/movie'
+﻿const uri = 'https://localhost:5001/api/movie'
 let movies = [];
 
 function getMovies() {
@@ -9,11 +9,11 @@ function getMovies() {
         .catch(error => console.error('Unable to get items.', error));   // Catch error and display in console
 }
 
-function reserveSeat(id) {
+async function reserveSeat(id) {
     console.log("Asked to reserve id: " + id);
-    fetch(uri + '/BookMovie/' + id, { method: 'PUT' })                  // Send put request to api
-        .then(response => console.log(response))
-    getMovies();                                                        // Refresh movies
+    const response = await fetch(uri + '/BookMovie/' + id, { method: 'PUT' })                  // Send put request to api
+    console.log(response);
+    getMovies() // Refresh movies  
 }
 
 
