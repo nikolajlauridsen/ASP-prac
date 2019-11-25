@@ -11,9 +11,9 @@ function getMovies() {
 
 async function reserveSeat(id) {
     console.log("Asked to reserve id: " + id);
-    const response = await fetch(uri + '/BookMovie/' + id, { method: 'PUT' })                  // Send put request to api
+    const response = await fetch(uri + '/BookMovie/' + id, { method: 'PUT' })                  // Send put request to api and wait for answer
     console.log(response);
-    getMovies() // Refresh movies  
+    getMovies() // Then refresh movies  
 }
 
 

