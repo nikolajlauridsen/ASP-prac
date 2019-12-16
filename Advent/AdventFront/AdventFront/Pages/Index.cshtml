@@ -1,0 +1,50 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 style="color:white;">It's christmas</h1>
+</div>
+
+<div class="scale-up-ver-bottom" id="fact-card" style="display:none">
+    <button id="closeBtn" onclick="closeCard()">Close</button>
+    <p id="fact-paragraph">Loading facc...</p>
+</div>
+
+<div class="container" style="width: 880px">
+    <div class="day-row row">
+        <div class="day-label">
+            <span>Sunday</span>
+        </div>
+        <div class="day-label">
+            <span>Monday</span>
+        </div>
+        <div class="day-label">
+            <span>Tuesday</span>
+        </div>
+        <div class="day-label">
+            <span>Wednesday</span>
+        </div>
+        <div class="day-label">
+            <span>Thursday</span>
+        </div>
+        <div class="day-label">
+            <span>Friday</span>
+        </div>
+        <div class="day-label">
+            <span>Saturday</span>
+        </div>
+    </div>
+    <div class="row">
+        @for (int i = 1; i <= 24; i++)
+        {
+            <div class="day" id="day-@i" onclick="showCard(@i)">
+                <div style="display: flex; justify-content: flex-end">
+                    <span class="day-number">@i</span>
+                </div>
+            </div>
+        }
+    </div>
+</div>
