@@ -51,7 +51,7 @@ namespace GaveBodAPI.Controllers
         [HttpGet("{GiftNumber}")]
         public Gift Get(int GiftNumber)
         {
-            Gift gift = gifts.Where(g => g.GiftNumber == GiftNumber).First();
+            Gift gift = gifts.First(g => g.GiftNumber == GiftNumber);
             return gift;
         }
 
@@ -66,6 +66,14 @@ namespace GaveBodAPI.Controllers
             }
             
             return CreatedAtAction("Get", new { GiftNumber = gift.GiftNumber }, gift);
+        }
+
+        [HttpDelete("{id}")]
+        public ActionResult DeleteGift(int id)
+        {
+            Gift gift = gifts.First(g => g.GiftNumber == id);
+            gifts.Remove(gift);
+            return StatusCode(200);
         }
     }
 }
