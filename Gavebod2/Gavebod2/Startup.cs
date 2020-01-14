@@ -29,9 +29,6 @@ namespace Gavebod2
             services.AddControllersWithViews();
             services.AddHttpClient();
             services.AddTransient<IAPIService, APIService>();
-
-            services.AddDbContext<Gavebod2Context>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("Gavebod2Context")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
