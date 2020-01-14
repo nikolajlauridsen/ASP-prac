@@ -14,15 +14,41 @@ namespace Gavebod2.Controllers
     {
 
         private readonly IAPIService api;
+        
         public GiftsController(IAPIService apiService)
         {
             api = apiService;
         }
 
         // GET: Gifts
+        [Route("{controller}")]
         public async Task<IActionResult> Index()
         {
             List<Gift> gifts = await api.GetAll<List<Gift>>("Gifts");
+            return View(gifts);
+        }
+
+        [Route("{controller}/{start:datetime}/{end:datetime}")]
+        public async Task<IActionResult> Index(DateTime start, DateTime end)
+        {
+            List<Gift> gifts = await api.GetAll<List<Gift>>("Gifts");
+            gifts = gifts.Where(g => g.CreationDate >= start && g.CreationDate <= end).ToList();
+            return View(gifts);
+
+        }
+
+        [Route("{controller}/{gender}")]
+        public async Task<IActionResult> index(string gender)
+        {
+            List<Gift> gifts = await api.GetAll<List<Gift>>("Gifts");
+            if (gender.ToLower() == "girl")
+            {
+                gifts = gifts.Where(g => g.GirlGift == true).ToList();
+            } else if (gender.ToLower() == "boy")
+            {
+                gifts = gifts.Where(g => g.BoyGift == true).ToList();
+            }
+
             return View(gifts);
         }
 

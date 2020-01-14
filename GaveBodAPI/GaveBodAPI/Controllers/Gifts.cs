@@ -39,6 +39,15 @@ namespace GaveBodAPI.Controllers
                     BoyGift = true,
                     GirlGift = true
                 });
+                gifts.Add(new Gift()
+                {
+                    GiftNumber = 3,
+                    CreationDate = new DateTime(2019, 12, 1),
+                    Title = "Old Gift",
+                    Description = "This is an old gift",
+                    BoyGift = true,
+                    GirlGift = true
+                });
             }
         }
 
