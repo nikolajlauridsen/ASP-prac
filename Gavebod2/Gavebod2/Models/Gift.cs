@@ -12,9 +12,11 @@ namespace Gavebod2.Models
         public int GiftNumber { get; set; }
 
         [Required]
+        [StringLength(100, MinimumLength = 3, ErrorMessage = "String must be between 3 and 100 characters long")]
         public string Title { get; set; }
 
         [Required]
+        [StringLength(1000, MinimumLength = 3, ErrorMessage = "String must be between 3 and 100 characters long")]
         public string Description { get; set; }
 
         [Display(Name = "Created")]
