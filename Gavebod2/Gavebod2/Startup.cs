@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Gavebod2.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -48,8 +50,14 @@ namespace Gavebod2
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
+
+            app.UseFileLogger(new FileLoggerOptions()
+            {
+                FileName = Path.Combine(env.ContentRootPath, "log.txt")
+            });
 
             app.UseRouting();
             app.UseAuthorization();

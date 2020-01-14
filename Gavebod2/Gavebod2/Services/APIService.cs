@@ -10,6 +10,11 @@ using Newtonsoft.Json;
 
 namespace Gavebod2.Services
 {
+    /// <summary>
+    /// This is made as a service, but could just as well be a typed client
+    /// An APIService is even made as a typed client in this article on MSDN
+    /// https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-3.1#typed-clients
+    /// </summary>
     public class APIService: IAPIService
     {
         private readonly IHttpClientFactory _clientFactory;
